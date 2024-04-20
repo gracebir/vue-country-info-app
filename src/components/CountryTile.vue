@@ -31,9 +31,9 @@ export default defineComponent({
   props: {
     name: {type: String, required: true},
     flag: {type: String, required: true},
-    population: {type: String, required: true},
+    population: {type: Number, required: true},
     region: {type: String, required: true},
-    capital: {type: String, required: true}
+    capital: {type: String, required: false}
   },
 });
 </script>
