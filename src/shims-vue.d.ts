@@ -13,6 +13,8 @@ declare module "@heroicons/vue/*" {
 declare module "@heroicons/vue/outline" {
   export { default as SearchCircleIcon } from "@heroicons/vue/outline/esm/SearchCircleIcon.js"
   export { default as SearchIcon } from "@heroicons/vue/outline/esm/SearchIcon.js"
+  export { default as ChevronDownIcon } from "@heroicons/vue/outline/esm/ChevronDownIcon.js"
+  export { default as ChevronLeftIcon } from "@heroicons/vue/outline/esm/ChevronLeftIcon.js"
   // rest of outline icons
 }
 
