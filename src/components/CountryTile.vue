@@ -9,7 +9,7 @@
             <h1 class="font-bold text-xl">{{ name }}</h1>
             <div class="flex flex-col gap-2">
                 <p>
-                    <span class="font-semibold">Population: </span> {{ population }}
+                    <span class="font-semibold">Population: </span> {{ formatNumber(population) }}
                 </p>
                 <p>
                     <span class="font-semibold">Region: </span> {{ region }}
@@ -35,5 +35,10 @@ export default defineComponent({
     region: {type: String, required: true},
     capital: {type: String, required: false}
   },
+  methods: {
+    formatNumber(number: number) {
+        return number.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    }
+  }
 });
 </script>
