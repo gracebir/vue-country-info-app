@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import CountryDetailVue from '@/views/CountryDetail.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/detail/:capital?',
+    name: 'detail',
+    component: CountryDetailVue
   }
 ]
 
