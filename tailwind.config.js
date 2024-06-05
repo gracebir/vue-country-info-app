@@ -12,6 +12,7 @@ export default {
         textLight: "var(--color-text-light)",
         textDark: "var(--color-text-dark)",
         textInputdark: "var(--color-text-dark)",
+        'light-gray': "var(--color-bg-light)"
       },
       backgroundColor: {
         bgLight: "var(--color-bg-light)",

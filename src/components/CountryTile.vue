@@ -1,6 +1,6 @@
 <template>
  <div class="bg-bgDarlElt rounded-md shadow w-full">
-        <router-link to="/">
+        <router-link :to="{name: 'detail', params: {capital}}">
             <div class="h-[150px]">
                 <img class="w-full h-full rounded-t-md" :src="flag" :alt="name">
             </div>
