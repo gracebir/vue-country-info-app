@@ -3,9 +3,7 @@
     <!-- header -->
     <div>
       <router-link to="/">
-        <div
-          class="max-w-40 bg-bgDarlElt px-2 py-2 flex justify-center rounded-md shadow-lg"
-        >
+        <div class="max-w-40 bg-bgDarlElt px-2 py-2 flex justify-center rounded-md shadow-lg">
           <div class="flex gap-1 items-center">
             <ArrowLeftIcon style="height: 15px; width: 40px" />
             <span class="font-bold text-base lg:text-lg">Back</span>
@@ -16,16 +14,11 @@
     <!-- country detail -->
     <div class="h-[60vh] flex justify-center items-center" v-if="isLoading">
       <h1 class="tex-center">Loading....</h1>
-    
     </div>
     <div v-if="!isLoading" class="grid md:grid-cols-1 gap-4 lg:grid-cols-2">
       <div class="">
         <div class="w-full lg:w-[600px] lg:h-[400px] h-[250px]">
-          <img
-            class="w-full h-full"
-            :src="country?.flags.png"
-            alt="country detail"
-          />
+          <img class="w-full h-full" :src="country?.flags.png" alt="country detail" />
         </div>
       </div>
       <div class="flex flex-col gap-8 justify-between py-6 px-0 lg:px-10">
@@ -33,30 +26,25 @@
         <div class="grid grid-cols-1 gap-8 lg:gap-3 lg:grid-cols-2">
           <div class="flex flex-col gap-2">
             <p>
-              <span class="font-semibold text-gray-100">Native Name: </span
-              >{{ country?.nativeName }}
+              <span class="font-semibold text-gray-100">Native Name: </span>{{ country?.nativeName }}
             </p>
             <p>
               <span class="font-semibold text-gray-100">Population: </span>
               {{ country?.population }}
             </p>
             <p>
-              <span class="font-semibold text-gray-100">Region: </span
-              >{{ country?.region }}
+              <span class="font-semibold text-gray-100">Region: </span>{{ country?.region }}
             </p>
             <p>
-              <span class="font-semibold text-gray-100">Sub Region: </span
-              >{{ country?.subregion }}
+              <span class="font-semibold text-gray-100">Sub Region: </span>{{ country?.subregion }}
             </p>
             <p>
-              <span class="font-semibold text-gray-100">Capital: </span
-              >{{ country?.capital }}
+              <span class="font-semibold text-gray-100">Capital: </span>{{ country?.capital }}
             </p>
           </div>
           <div class="flex flex-col gap-2">
             <p>
-              <span class="font-semibold text-gray-100"
-                >Top Level Domain:
+              <span class="font-semibold text-gray-100">Top Level Domain:
               </span>
               <span v-for="domain of country?.topLevelDomain" :key="domain">{{
                 domain
@@ -64,24 +52,17 @@
             </p>
             <p>
               <span class="font-semibold text-gray-100">Currencies: </span>
-              <span
-                class="space-x-2"
-                v-for="currency of country?.currencies"
-                :key="currency.code"
-              >
+              <span class="space-x-2" v-for="currency of country?.currencies" :key="currency.code">
                 {{ currency.name }}
               </span>
             </p>
             <div class="flex flex-row">
               <span class="font-semibold text-gray-100">Languages: </span>
               <div class="flex flex-wrap ml-2">
-                <span
-                  v-for="(language, i) of country?.languages"
-                  :key="language.iso639_1"
-                >
+                <span v-for="(language, i) of country?.languages" :key="language.iso639_1">
                   {{ language.name }}
-                  <span v-if="country?.languages.length !==i+1">, </span>
-              </span>
+                  <span v-if="country?.languages.length !== i + 1">, </span>
+                </span>
               </div>
             </div>
           </div>
@@ -89,7 +70,8 @@
         <div class="flex gap-2 items-center">
           <h3 class="text-base lg:text-lg font-semibold">Border Countries:</h3>
           <div class="flex flex-wrap gap-3 ">
-            <span class="bg-bgDarlElt px-6 py-2 shadow-md rounded-md" v-for="border of country?.borders" :key="border">{{ border }}</span>
+            <span class="bg-bgDarlElt px-6 py-2 shadow-md rounded-md" v-for="border of country?.borders"
+              :key="border">{{ border }}</span>
           </div>
 
         </div>
@@ -97,8 +79,8 @@
     </div>
   </div>
 </template>
-  
-  <script lang="ts">
+
+<script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 import { ArrowLeftIcon } from "@heroicons/vue/outline";
 import { useRoute } from "vue-router";
@@ -108,7 +90,7 @@ export default defineComponent({
   name: "CountryDetails",
   components: {
     ArrowLeftIcon,
- 
+
   },
   setup() {
     type tCountries = {
@@ -134,19 +116,19 @@ export default defineComponent({
     const isLoading = ref<boolean>(false)
 
     async function getCountry() {
-     try {
-      isLoading.value = true
-      const response = await axios.get(
-        `https://restcountries.com/v2/capital/${route.params.capital}`
-      );
-      const data = await response.data[0];
-      country.value = data;
-     } catch (error) {
-      console.error(error)
-     }
-     finally{
-      isLoading.value = false
-     }
+      try {
+        isLoading.value = true
+        const response = await axios.get(
+          `https://restcountries.com/v2/capital/${route.params.capital}`
+        );
+        const data = await response.data[0];
+        country.value = data;
+      } catch (error) {
+        console.error(error)
+      }
+      finally {
+        isLoading.value = false
+      }
     }
 
     function formatNumber(number: number) {
